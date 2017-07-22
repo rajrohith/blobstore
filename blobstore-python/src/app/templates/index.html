@@ -1,1 +1,24 @@
-
+<html>
+  <head>
+    <title>Blobstore viewer</title>
+  </head>
+  <body>
+      <p>Objects in bucket: {{ bucket }}</p>
+      <ul>
+      {% for key in objectKeys %}
+      <li><a href="/download/{{ key }}">{{ key }}</a>
+      	  <a href="/delete/{{ key }}"><img alt="Delete Service Instance" 
+		       src="/static/delete.png" 
+			   height="15" 
+			   width="15"></li></a>
+      {% endfor %}
+      </ul>
+      
+      <form action = "/upload" method = "POST" 
+         enctype = "multipart/form-data">
+         <input type = "file" name = "file" />
+         <input type = "submit"/>
+      </form>
+      <p style="color:red">{{ status_message }}</p>
+  </body>
+</html>
