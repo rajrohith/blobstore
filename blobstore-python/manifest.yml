@@ -1,8 +1,13 @@
 ---
 applications:
-- name: hello-blobstore
-  memory: 128MB
+- name: raj-python-blobstore-upload-download
+  memory: 256MB
   disk_quota: 256MB
   random-route: true
   buildpack: python_buildpack
   command: python src/run.py
+  env:
+     BROKER_SERVICE_NAME: blob
+     ENABLE_SERVER_SIDE_ENCRYPTION: true
+  services:
+    - blob     
